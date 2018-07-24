@@ -1,15 +1,13 @@
 package com.troyszc.firstHibernate.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "student")
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //handle auto-increment
     @Column(name = "id")
     private int id;
 
