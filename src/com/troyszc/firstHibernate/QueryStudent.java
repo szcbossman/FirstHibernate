@@ -21,10 +21,17 @@ public class QueryStudent {
 
         try {
             session.beginTransaction();
+
             List<Student> theStudents = session.createQuery("from Student").getResultList();
             displayStudents(theStudents);
 
             theStudents = session.createQuery("from Student s where s.lastName = 'Chevy'").getResultList();
+            displayStudents(theStudents);
+
+            theStudents = session.createQuery("from Student s where s.lastName = 'Chevy' or s.firstName = 'Mustang'").getResultList();
+            displayStudents(theStudents);
+
+            theStudents = session.createQuery("from Student s where s.email like '%dodge.com' ").getResultList();
             displayStudents(theStudents);
 
             session.getTransaction().commit();
@@ -41,5 +48,6 @@ public class QueryStudent {
         for (Student s : theStudents) {
             System.out.println(s);
         }
+        System.out.println("\n");
     }
 }
